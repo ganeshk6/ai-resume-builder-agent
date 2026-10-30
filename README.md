@@ -1,219 +1,154 @@
-AI Resume Builder
-An AI-powered Resume Builder that helps users create, improve, and manage professional resumes through an intelligent conversational interface.
-
-Instead of filling out a traditional resume form, users interact with an AI assistant that collects their information step by step, understands their requirements, validates the collected data, and generates a structured, professional resume.
-
-The application uses an AI-powered workflow built with LangChain and LangGraph, a Node.js and Express.js backend, and MongoDB for persistent data storage.
-
-Table of Contents
-Project Overview
-
-Key Features
-
-Technology Stack
-
-System Architecture
-
-AI Agent Workflow
-
-Conversation Flow
-
-Intent Detection
-
-Requirement Collection
-
-Resume Generation Pipeline
-
-Database Design
-
-Backend Project Structure
-
-API Documentation
-
-Installation and Setup
-
-Environment Variables
-
-How to Run the Project
-
-Screenshots
-
-Future Improvements
-
-🚀 Project Overview
-AI Resume Builder is an intelligent resume-generation application designed to simplify the resume creation process.
-
-The application uses a conversational AI agent that interacts with users and collects all the necessary information before generating a resume.
-
-The agent does not immediately generate a resume after receiving a single message. Instead, it follows a structured workflow:
-
-Understands the user's intent.
-
-Identifies whether the user wants to create, update, or improve a resume.
-
-Collects relevant personal and professional information.
-
-Determines whether the candidate is a fresher or an experienced professional.
-
-Asks questions dynamically based on the candidate's experience type.
-
-Validates the collected information.
-
-Presents a complete resume preview for approval.
-
-Generates and saves the final resume.
-
-Main Objective
-To build an AI-powered resume assistant that provides a personalized, guided, and structured resume creation experience.
-
-✨ Key Features
-1. AI-Powered Conversational Interface
-Interactive chatbot-based resume creation.
-
-Natural language understanding.
-
-Dynamic question generation.
-
-Context-aware conversations.
-
-Step-by-step information collection.
-
-2. Multiple Resume Operations
-Create a new resume.
-
-Update an existing resume.
-
-Improve an existing resume.
-
-Generate a new version of an improved resume.
-
-3. Dynamic Requirement Collection
-The AI agent collects information such as:
-
-Target job role
-
-Technical and professional skills
-
-Experience type
-
-Work experience
-
-Education
-
-Internships
-
-Projects
-
-Achievements
-
-Certifications
-
-Professional summary
-
-GitHub, LinkedIn, portfolio, and other professional links
-
-4. Fresher and Experienced Candidate Support
-The workflow changes based on the candidate's experience type.
-
-Fresher workflow:
-
-Target job role
-
-Skills
-
-Experience type
-
-Education
-
-Internships
-
-Projects
-
-Achievements
-
-Certifications
-
-Professional summary
-
-Professional links
-
-Resume review
-
-Experienced workflow:
-
-Target job role
-
-Skills
-
-Experience type
-
-Work experience
-
-Education
-
-Internships
-
-Projects
-
-Achievements
-
-Certifications
-
-Professional summary
-
-Professional links
-
-Resume review
-
-5. Resume Validation and Approval
-Validates collected information.
-
-Maintains structured resume requirements.
-
-Allows users to review their information.
-
-Generates the final resume only after approval.
-
-6. Resume Generation
-Structured resume content.
-
-PDF generation.
-
-Resume version management.
-
-Resume download support.
-
-Option to generate a single-page resume when requested.
-
-7. Conversation and Session Management
-Maintains chat sessions.
-
-Stores conversation messages.
-
-Retrieves previous chat history.
-
-Maintains workflow state across conversation turns.
-
-🛠 Technology Stack
-Technology	Purpose
-React.js	Frontend user interface
-Node.js	Backend runtime
-Express.js	REST API development
-MongoDB	Database
-Mongoose	MongoDB object modeling
-Firebase Authentication	User authentication
-LangChain	LLM integration and message handling
-LangGraph	Stateful AI workflow orchestration
-Zod	Structured data validation
-Groq / Configured LLM Provider	AI model inference
-PDF Generation Library	Resume PDF generation
-Update the LLM provider and PDF library names according to the exact packages configured in your project.
-
-🏗 System Architecture
-The application follows a frontend-backend-AI workflow architecture.
-
+<div align="center">
+
+# 🤖 AI Resume Builder
+
+### Build professional resumes by simply *talking* to an AI agent.
+
+An AI-powered, conversational resume builder that collects your details step by step, validates them, and generates a structured, professional resume.
+
+<br/>
+
+![React](https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB)
+![Node.js](https://img.shields.io/badge/Node.js-339933?style=for-the-badge&logo=nodedotjs&logoColor=white)
+![Express](https://img.shields.io/badge/Express.js-000000?style=for-the-badge&logo=express&logoColor=white)
+![MongoDB](https://img.shields.io/badge/MongoDB-47A248?style=for-the-badge&logo=mongodb&logoColor=white)
+![Firebase](https://img.shields.io/badge/Firebase-FFCA28?style=for-the-badge&logo=firebase&logoColor=black)
+![LangChain](https://img.shields.io/badge/LangChain-1C3C3C?style=for-the-badge&logo=langchain&logoColor=white)
+![LangGraph](https://img.shields.io/badge/LangGraph-FF6F00?style=for-the-badge)
+![Groq](https://img.shields.io/badge/Groq-F55036?style=for-the-badge)
+![Zod](https://img.shields.io/badge/Zod-3E67B1?style=for-the-badge&logo=zod&logoColor=white)
+
+<br/>
+
+[Features](#-key-features) •
+[Architecture](#-system-architecture) •
+[AI Workflow](#-ai-agent-workflow) •
+[Setup](#-installation--setup) •
+[API](#-api-reference) •
+[Roadmap](#-roadmap)
+
+</div>
+
+---
+
+## 📖 Table of Contents
+
+- [Overview](#-overview)
+- [Key Features](#-key-features)
+- [Tech Stack](#-tech-stack)
+- [System Architecture](#-system-architecture)
+- [AI Agent Workflow](#-ai-agent-workflow)
+- [Conversation Flow](#-conversation-flow)
+- [Intent Detection](#-intent-detection)
+- [Requirement Collection](#-requirement-collection)
+- [Resume Generation Pipeline](#-resume-generation-pipeline)
+- [Database Design](#-database-design)
+- [Project Structure](#-project-structure)
+- [API Reference](#-api-reference)
+- [Installation & Setup](#-installation--setup)
+- [Environment Variables](#-environment-variables)
+- [Screenshots](#-screenshots)
+- [Roadmap](#-roadmap)
+- [Security](#-security-considerations)
+- [Contributing](#-contributing)
+- [License](#-license)
+- [Author](#-author)
+
+---
+
+## 🚀 Overview
+
+Instead of filling out a long, boring resume form, users chat with an AI assistant. The agent does **not** generate a resume from a single message — it follows a structured, stateful workflow:
+
+1. 🎯 Understands the user's intent (create / update / improve).
+2. 📥 Collects personal and professional information.
+3. 🧑‍💼 Detects whether the candidate is a **fresher** or **experienced**.
+4. ❓ Asks questions dynamically based on experience type.
+5. ✅ Validates the collected information.
+6. 👀 Shows a complete resume preview for approval.
+7. 📄 Generates and saves the final resume.
+
+> **🎯 Goal:** a personalized, guided and structured resume-creation experience powered by **LangChain + LangGraph**.
+
+---
+
+## ✨ Key Features
+
+<table>
+<tr>
+<td width="50%" valign="top">
+
+### 💬 Conversational Interface
+- Chatbot-based resume creation
+- Natural language understanding
+- Dynamic question generation
+- Context-aware conversations
+- Step-by-step information collection
+
+### 🛠 Multiple Resume Operations
+- Create a new resume
+- Update an existing resume
+- Improve an existing resume
+- Generate a new improved version
+
+### 🧑‍🎓 Fresher & Experienced Support
+- Workflow adapts to the candidate type
+- Different question order for each type
+
+</td>
+<td width="50%" valign="top">
+
+### ✅ Validation & Approval
+- Validates collected information
+- Maintains structured requirements
+- Lets users review before generation
+- Generates the resume only after approval
+
+### 📄 Resume Generation
+- Structured resume content
+- PDF generation
+- Resume version management
+- Download support
+- Single-page resume option
+
+### 🗂 Session Management
+- Persistent chat sessions
+- Stored conversation messages
+- Chat history retrieval
+- Workflow state kept across turns
+
+</td>
+</tr>
+</table>
+
+### 📋 Information the Agent Collects
+
+`Target Role` · `Skills` · `Experience Type` · `Work Experience` · `Education` · `Internships` · `Projects` · `Achievements` · `Certifications` · `Professional Summary` · `GitHub / LinkedIn / Portfolio links`
+
+---
+
+## 🛠 Tech Stack
+
+| Layer | Technology | Purpose |
+|-------|-----------|---------|
+| 🎨 Frontend | **React.js** | User interface |
+| ⚙️ Runtime | **Node.js** | Backend runtime |
+| 🌐 API | **Express.js** | REST API development |
+| 🗄 Database | **MongoDB + Mongoose** | Data storage & modeling |
+| 🔐 Auth | **Firebase Authentication** | User authentication |
+| 🧠 AI Framework | **LangChain** | LLM integration & message handling |
+| 🔀 Orchestration | **LangGraph** | Stateful AI workflow |
+| ✔️ Validation | **Zod** | Structured data validation |
+| ⚡ LLM | **Groq** | AI model inference |
+| 📄 PDF | PDF generation library | Resume PDF output |
+
+---
+
+## 🏗 System Architecture
+
+```mermaid
 flowchart TD
-    A[User] --> B[React Frontend]
+    A[👤 User] --> B[React Frontend]
     B --> C[Express REST API]
     C --> D[Authentication]
     C --> E[Chat Controller]
@@ -227,61 +162,22 @@ flowchart TD
     F --> M[(MongoDB)]
     K --> M
     L --> N[Resume Download]
-Architecture Responsibilities
-Frontend
+```
 
-User interaction.
+| Component | Responsibilities |
+|-----------|------------------|
+| **Frontend** | Chat interface, resume preview, resume download, session history |
+| **Backend** | API management, authentication, session management, database operations, AI workflow execution |
+| **AI Workflow** | Intent detection, information extraction, requirement management, dynamic question selection, validation, resume generation |
+| **Database** | Users, chat sessions, chat messages, resumes and versions |
 
-Chat interface.
+---
 
-Resume preview.
+## 🤖 AI Agent Workflow
 
-Resume download.
+The heart of the project is a **LangGraph-based stateful workflow**. Every message is processed in the context of the current session state instead of independently.
 
-Session history.
-
-Backend
-
-API management.
-
-Authentication.
-
-Chat session management.
-
-Database operations.
-
-AI workflow execution.
-
-AI Workflow
-
-Intent detection.
-
-Information extraction.
-
-Requirement management.
-
-Dynamic question selection.
-
-Resume validation.
-
-Resume generation.
-
-Database
-
-User information.
-
-Chat sessions.
-
-Chat messages.
-
-Resume records and versions.
-
-🤖 AI Agent Workflow
-The most important component of this project is its LangGraph-based AI workflow.
-
-The agent follows a stateful workflow instead of processing every message independently.
-
-Main Workflow Diagram
+```mermaid
 flowchart TD
     A([START]) --> B{User Message Exists?}
     B -->|No| C[Greeting Node]
@@ -295,37 +191,24 @@ flowchart TD
     G --> I{Validation Approved?}
     I -->|Yes| J[Generate Resume Node]
     I -->|No| Z
-    J --> Z([END])
-Workflow Nodes
-1. Greeting Node
-Welcomes the user and asks what they want to do.
+    J --> Z
+```
 
-Example:
+### 🧩 Workflow Nodes
 
-Hello! How can I assist you today? Would you like to create a new resume or update an existing one?
+| # | Node | What it does |
+|---|------|--------------|
+| 1 | 👋 **Greeting** | Welcomes the user and asks what they want to do |
+| 2 | 🧠 **Understand Message** | Detects intent, extracts resume data, section actions, format preferences and approval requests |
+| 3 | 🔄 **Update Requirements** | Updates the structured requirements using the extracted information |
+| 4 | ➡️ **Select Next Step** | Picks the next question based on step, experience type, missing data, status, requested section and intent |
+| 5 | 🛡 **Validate and Save** | Validates the data and handles approval before generation |
+| 6 | 📄 **Generate Resume** | Generates the resume from confirmed data and stores it |
 
-2. Understand Message Node
-Analyzes the latest user message and extracts structured information.
+<details>
+<summary><b>📦 Example requirement object</b></summary>
 
-Responsibilities:
-
-Understand user intent.
-
-Extract resume information.
-
-Identify section-related actions.
-
-Detect resume format preferences.
-
-Identify approval requests.
-
-3. Update Requirements Node
-Updates the current resume requirements using extracted information.
-
-Each requirement maintains a structured status and value.
-
-Example:
-
+```js
 {
   experienceType: {
     status: "answered",
@@ -333,31 +216,20 @@ Example:
     updatedAt: "2026-10-30T10:00:00.000Z"
   }
 }
-4. Select Next Step Node
-Determines the next question based on:
+```
 
-Current workflow step.
+</details>
 
-Candidate experience type.
+---
 
-Missing requirements.
+## 🔄 Conversation Flow
 
-Requirement status.
+The question order differs for freshers and experienced candidates. Experienced candidates share their work history **before** education.
 
-User's requested section.
+<details open>
+<summary><b>🧑‍🎓 Fresher Flow</b></summary>
 
-Current resume intent.
-
-5. Validate and Save Node
-Validates collected information and handles the approval process before resume generation.
-
-6. Generate Resume Node
-Generates the resume using the confirmed information and stores the generated resume details.
-
-🔄 Conversation Flow
-The application uses different question sequences for freshers and experienced candidates.
-
-Fresher Flow
+```mermaid
 flowchart TD
     A[Start Resume Creation] --> B[Target Job Role]
     B --> C[Technical Skills]
@@ -372,7 +244,14 @@ flowchart TD
     K --> L[Resume Review]
     L --> M[User Approval]
     M --> N[Generate Resume]
-Experienced Candidate Flow
+```
+
+</details>
+
+<details open>
+<summary><b>💼 Experienced Candidate Flow</b></summary>
+
+```mermaid
 flowchart TD
     A[Start Resume Creation] --> B[Target Job Role]
     B --> C[Technical Skills]
@@ -388,17 +267,22 @@ flowchart TD
     L --> M[Resume Review]
     M --> N[User Approval]
     N --> O[Generate Resume]
-The workflow ensures that experienced candidates provide their professional work history before education details, while freshers start with their education.
+```
 
-🎯 Intent Detection
-The AI agent supports multiple resume-related intents.
+</details>
 
-Intent	Description
-undecided	User intent is not yet identified
-create_resume	Create a new resume
-update_resume	Update an existing resume
-improve_resume	Improve an existing resume
-Intent Workflow
+---
+
+## 🎯 Intent Detection
+
+| Intent | Description |
+|--------|-------------|
+| `undecided` | User intent is not yet identified |
+| `create_resume` | Create a new resume |
+| `update_resume` | Update an existing resume |
+| `improve_resume` | Improve an existing resume |
+
+```mermaid
 flowchart TD
     A[User Message] --> B[Intent Detection]
     B --> C{Detected Intent}
@@ -410,24 +294,31 @@ flowchart TD
     E --> H
     F --> I[Confirm Improvement]
     I --> J[Generate Improved Version]
-📋 Requirement Collection
-The AI agent collects information in structured sections.
+```
 
-Section	Information Collected
-Target Role	Desired job title
-Skills	Technical and professional skills
-Experience Type	Fresher or experienced
-Work Experience	Company, designation, dates, responsibilities
-Education	Degree, institution, graduation year, field of study
-Internships	Organization, designation, duration, responsibilities
-Projects	Project name, technologies, role, description, URLs
-Achievements	Awards and accomplishments
-Certifications	Certification name, issuer, date, credential URL
-Professional Summary	Manually provided or AI-generated
-Links	GitHub, LinkedIn, portfolio, LeetCode
-Requirement Status Management
-Each requirement has a status.
+---
 
+## 📋 Requirement Collection
+
+| Section | Information Collected |
+|---------|----------------------|
+| 🎯 Target Role | Desired job title |
+| 🧰 Skills | Technical and professional skills |
+| 🧑‍💼 Experience Type | Fresher or experienced |
+| 💼 Work Experience | Company, designation, dates, responsibilities |
+| 🎓 Education | Degree, institution, graduation year, field of study |
+| 🏢 Internships | Organization, designation, duration, responsibilities |
+| 🚀 Projects | Name, technologies, role, description, URLs |
+| 🏆 Achievements | Awards and accomplishments |
+| 📜 Certifications | Name, issuer, date, credential URL |
+| 📝 Professional Summary | Manually provided or AI-generated |
+| 🔗 Links | GitHub, LinkedIn, portfolio, LeetCode |
+
+### 🚦 Requirement Status Management
+
+Each requirement carries a status so the workflow always knows what is collected and what is still missing.
+
+```js
 export const REQUIREMENT_STATUS = {
     PENDING: "pending",
     IN_PROGRESS: "in_progress",
@@ -436,11 +327,13 @@ export const REQUIREMENT_STATUS = {
     CONFIRMED: "confirmed",
     NOT_APPLICABLE: "not_applicable",
 };
-This allows the workflow to track which information has been collected and which sections still need user input.
+```
 
-📄 Resume Generation Pipeline
-Resume generation follows a controlled process.
+---
 
+## 📄 Resume Generation Pipeline
+
+```mermaid
 flowchart TD
     A[Collected Requirements] --> B[Resume Review]
     B --> C{User Approved?}
@@ -455,27 +348,27 @@ flowchart TD
     J --> K[Generate PDF]
     K --> L[Save Resume and Version]
     L --> M[Return Download Information]
-Generation Principles
-Use only confirmed information from the current resume requirements.
+```
 
-Do not invent work experience, education, achievements, or skills.
+### 🧭 Generation Principles
 
-Avoid duplicate sections and repeated information.
+- ✅ Use **only confirmed** information from the current requirements
+- 🚫 Never invent work experience, education, achievements or skills
+- 🔁 Avoid duplicate sections and repeated information
+- 🛡 Validate generated content against the expected Zod schema
+- 🧾 Preserve the user's actual information
+- 📦 Generate the requested output format
 
-Validate generated content against the expected schema.
+---
 
-Preserve the user's actual information.
+## 🗄 Database Design
 
-Generate the requested output format.
+MongoDB with Mongoose. *This is a conceptual design — adapt it to the actual schemas.*
 
-🗄 Database Design
-The application uses MongoDB with Mongoose.
+<details>
+<summary><b>👤 Users</b></summary>
 
-The following is a conceptual database design. Adapt the fields and relationships to your actual Mongoose schemas.
-
-1. Users Collection
-Stores user account information.
-
+```js
 {
   _id: ObjectId,
   firebaseUid: String,
@@ -484,9 +377,14 @@ Stores user account information.
   createdAt: Date,
   updatedAt: Date
 }
-2. Chat Sessions Collection
-Stores individual resume-building sessions.
+```
 
+</details>
+
+<details>
+<summary><b>💬 Chat Sessions</b></summary>
+
+```js
 {
   _id: ObjectId,
   userId: ObjectId,
@@ -498,9 +396,14 @@ Stores individual resume-building sessions.
   createdAt: Date,
   updatedAt: Date
 }
-3. Chat Messages Collection
-Stores user and AI conversation messages.
+```
 
+</details>
+
+<details>
+<summary><b>✉️ Chat Messages</b></summary>
+
+```js
 {
   _id: ObjectId,
   sessionId: ObjectId,
@@ -508,9 +411,14 @@ Stores user and AI conversation messages.
   content: String,
   createdAt: Date
 }
-4. Resumes Collection
-Stores generated resume information.
+```
 
+</details>
+
+<details>
+<summary><b>📄 Resumes</b></summary>
+
+```js
 {
   _id: ObjectId,
   userId: ObjectId,
@@ -522,9 +430,14 @@ Stores generated resume information.
   createdAt: Date,
   updatedAt: Date
 }
-5. Resume Versions Collection
-Stores different versions of a resume.
+```
 
+</details>
+
+<details>
+<summary><b>🕘 Resume Versions</b></summary>
+
+```js
 {
   _id: ObjectId,
   resumeId: ObjectId,
@@ -534,195 +447,206 @@ Stores different versions of a resume.
   downloadUrl: String,
   createdAt: Date
 }
-📁 Backend Project Structure
-Example modular backend organization:
+```
 
+</details>
+
+---
+
+## 📁 Project Structure
+
+```bash
 backend/
-│
 ├── src/
 │   ├── config/
 │   │   ├── database.js
 │   │   └── firebase.js
-│   │
 │   ├── modules/
 │   │   ├── auth/
 │   │   ├── chat/
 │   │   └── resume/
-│   │
 │   ├── aiWorkflow/
 │   │   ├── constants/
 │   │   │   └── workflow.constants.js
-│   │   │
 │   │   ├── workflow/
 │   │   │   ├── workflow.graph.js
 │   │   │   └── workflow.state.js
-│   │   │
 │   │   ├── understand-message.js
 │   │   ├── update-requirements.js
 │   │   ├── select-next-step.js
 │   │   ├── validate-and-save.js
 │   │   └── generate-resume.js
-│   │
 │   ├── middleware/
 │   ├── utils/
 │   ├── app.js
 │   └── server.js
-│
 ├── .env
 ├── .env.example
 └── package.json
-This is an illustrative structure. Adjust it to match the actual repository.
+```
 
-🔌 API Documentation
-The following is an example API organization. Replace the example routes with your actual Express routes.
+---
 
-Method	Endpoint	Purpose
-POST	/api/auth/...	Authentication
-POST	/api/chat/sessions	Create a chat session
-GET	/api/chat/sessions	Get chat sessions
-GET	/api/chat/sessions/:sessionId/messages	Get session messages
-POST	/api/chat/sessions/:sessionId/messages	Send a chat message
-GET	/api/resumes	Get user resumes
-GET	/api/resumes/:resumeId	Get resume details
-GET	/api/resumes/:resumeId/download	Download resume
-⚙️ Installation and Setup
-Prerequisites
-Install the following:
+## 🔌 API Reference
 
-Node.js
+| Method | Endpoint | Description |
+|:------:|----------|-------------|
+| `POST` | `/api/auth/...` | Authentication |
+| `POST` | `/api/chat/sessions` | Create a chat session |
+| `GET` | `/api/chat/sessions` | Get all chat sessions |
+| `GET` | `/api/chat/sessions/:sessionId/messages` | Get messages of a session |
+| `POST` | `/api/chat/sessions/:sessionId/messages` | Send a chat message |
+| `GET` | `/api/resumes` | Get user resumes |
+| `GET` | `/api/resumes/:resumeId` | Get resume details |
+| `GET` | `/api/resumes/:resumeId/download` | Download a resume |
 
-npm
+---
 
-MongoDB
+## ⚙️ Installation & Setup
 
-Firebase project
+### Prerequisites
 
-API key for your configured LLM provider
+- [Node.js](https://nodejs.org/) & npm
+- [MongoDB](https://www.mongodb.com/) (local or Atlas)
+- A [Firebase](https://firebase.google.com/) project
+- A [Groq](https://console.groq.com/) API key
 
-1. Clone the Repository
-git clone https://github.com/ganeshk6/ai-resume-builder-agent
-cd ai-resume-builder
-2. Install Backend Dependencies
+### 1️⃣ Clone the repository
+
+```bash
+git clone https://github.com/ganeshk6/ai-resume-builder-agent.git
+cd ai-resume-builder-agent
+```
+
+### 2️⃣ Setup the backend
+
+```bash
 cd backend
 npm install
-3. Configure Environment Variables
-Create a .env file in the backend directory.
+```
 
-PORT=3001
+Create a `.env` file in the `backend` directory (see [Environment Variables](#-environment-variables)), then start the server:
 
-MONGODB_URI=your_mongodb_connection_string
-
-FRONTEND_URL=http://localhost:5173
-
-FIREBASE_PROJECT_ID=your_firebase_project_id
-
-GROQ_API_KEY=your_groq_api_key
-
-GROQ_MODEL=your_configured_model
-Add any additional environment variables required by your actual implementation.
-
-4. Start the Backend
+```bash
 npm run dev
-5. Install Frontend Dependencies
-Open another terminal:
+```
 
+### 3️⃣ Setup the frontend
+
+Open a new terminal:
+
+```bash
 cd frontend
 npm install
-6. Start the Frontend
 npm run dev
-Open the frontend URL displayed in your terminal.
+```
 
-🔐 Environment Variables
-Variable	Description
-PORT	Backend server port
-MONGODB_URI	MongoDB connection string
-FRONTEND_URL	Frontend application URL
-FIREBASE_PROJECT_ID	Firebase project identifier
-GROQ_API_KEY	LLM provider API key
-GROQ_MODEL	Configured LLM model
-Security: Never commit .env, Firebase private credentials, API keys, or database credentials to GitHub.
+Open the URL shown in your terminal (usually `http://localhost:5173`). 🎉
 
-🖼 Screenshots
-Add actual application screenshots in the repository under:
+---
 
-docs/
-└── screenshots/
-    ├── home.png
-    ├── login.png
-    ├── chat-interface.png
-    ├── experience-details.png
-    ├── education-details.png
-    ├── resume-review.png
-    └── generated-resume.png
-Once the screenshots are added, display them using:
+## 🔐 Environment Variables
 
-Application Dashboard
+```env
+PORT=3001
+MONGODB_URI=your_mongodb_connection_string
+FRONTEND_URL=http://localhost:5173
+FIREBASE_PROJECT_ID=your_firebase_project_id
+GROQ_API_KEY=your_groq_api_key
+GROQ_MODEL=your_configured_model
+```
 
+| Variable | Description |
+|----------|-------------|
+| `PORT` | Backend server port |
+| `MONGODB_URI` | MongoDB connection string |
+| `FRONTEND_URL` | Frontend application URL |
+| `FIREBASE_PROJECT_ID` | Firebase project identifier |
+| `GROQ_API_KEY` | LLM provider API key |
+| `GROQ_MODEL` | Configured LLM model |
 
-AI Chat Interface
+> [!WARNING]
+> Never commit `.env`, Firebase private credentials, API keys or database credentials to GitHub.
 
+---
 
-Resume Review
+## 🖼 Screenshots
 
+> Add your screenshots to `docs/screenshots/` and they will show up here automatically.
 
-Generated Resume
+| Home | Login |
+|:----:|:-----:|
+| ![Home](docs/screenshots/home.png) | ![Login](docs/screenshots/login.png) |
 
+| Chat Interface | Experience Details |
+|:--------------:|:------------------:|
+| ![Chat Interface](docs/screenshots/chat-interface.png) | ![Experience Details](docs/screenshots/experience-details.png) |
 
-🚀 Future Improvements
-Multiple professional resume templates.
+| Education Details | Resume Review |
+|:-----------------:|:-------------:|
+| ![Education Details](docs/screenshots/education-details.png) | ![Resume Review](docs/screenshots/resume-review.png) |
 
-DOCX export support.
+| Generated Resume |
+|:----------------:|
+| ![Generated Resume](docs/screenshots/generated-resume.png) |
 
-ATS compatibility analysis.
+---
 
-Resume scoring and recommendations.
+## 🗺 Roadmap
 
-Job description-based resume customization.
+- [ ] Multiple professional resume templates
+- [ ] DOCX export support
+- [ ] ATS compatibility analysis
+- [ ] Resume scoring and recommendations
+- [ ] Job-description-based resume customization
+- [ ] AI-powered cover letter generation
+- [ ] LinkedIn profile integration
+- [ ] Resume analytics and version comparison
+- [ ] Advanced resume editing tools
+- [ ] Deployment with Docker and CI/CD
 
-AI-powered cover letter generation.
+---
 
-LinkedIn profile integration.
+## 🔒 Security Considerations
 
-Resume analytics and version comparison.
+- Protect API routes with authentication middleware
+- Validate all incoming requests
+- Keep API keys in environment variables
+- Apply ownership checks before accessing resumes and sessions
+- Avoid exposing sensitive user information
+- Sanitize and validate generated file operations
 
-More advanced resume editing tools.
+---
 
-Deployment with Docker and CI/CD.
+## 🤝 Contributing
 
-🔒 Security Considerations
-Protect API routes with authentication middleware.
+Contributions, feature suggestions and bug reports are welcome!
 
-Validate incoming requests.
+1. 🍴 Fork the repository
+2. 🌿 Create a feature branch (`git checkout -b feature/amazing-feature`)
+3. 💾 Commit your changes (`git commit -m "Add amazing feature"`)
+4. 📤 Push the branch (`git push origin feature/amazing-feature`)
+5. 🔁 Open a Pull Request
 
-Keep API keys in environment variables.
+---
 
-Apply ownership checks before accessing resumes and sessions.
+## 📜 License
 
-Avoid exposing sensitive user information.
+Distributed under the **MIT License**. Add a `LICENSE` file to the repository before publishing.
 
-Sanitize and validate generated file operations.
+---
 
-🤝 Contributing
-Contributions, feature suggestions, and bug reports are welcome.
+## 👨‍💻 Author
 
-Fork the repository.
+<div align="center">
 
-Create a feature branch.
+**Ganesh Kumar**
 
-Commit your changes.
+[![GitHub](https://img.shields.io/badge/GitHub-ganeshk6-181717?style=for-the-badge&logo=github)](https://github.com/ganeshk6)
+[![LinkedIn](https://img.shields.io/badge/LinkedIn-Ganesh%20Kumar-0A66C2?style=for-the-badge&logo=linkedin)](https://www.linkedin.com/in/ganesh-kumar-47988621b/)
 
-Push your branch.
+<br/>
 
-Open a Pull Request.
+⭐ **If you find this project useful, consider giving it a star!** ⭐
 
-📜 License
-Choose and add a license before publishing the project publicly. For example, MIT License.
-
-👨‍💻 Author
-Ganesh Kumar
-
-GitHub: [Ganesh Kumar](https://github.com/ganeshk6)
-
-LinkedIn: [Ganesh Kumar](https://www.linkedin.com/in/ganesh-kumar-47988621b/)
-
-⭐ If you find this project useful, consider giving it a star!
+</div>
