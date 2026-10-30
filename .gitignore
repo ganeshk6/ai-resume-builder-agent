@@ -1,0 +1,120 @@
+==========================================
+Environment Variables - Frontend & Backend
+==========================================
+.env
+.env.*
+!.env.example
+!.env.sample
+
+Frontend environment files
+frontend/.env
+frontend/.env.*
+!frontend/.env.example
+!frontend/.env.sample
+
+Backend environment files
+backend/.env
+backend/.env.*
+!backend/.env.example
+!backend/.env.sample
+
+==========================================
+Node Modules
+==========================================
+node_modules/
+**/node_modules/
+
+==========================================
+Build & Distribution
+==========================================
+dist/
+build/
+out/
+.next/
+.nuxt/
+.output/
+coverage/
+
+==========================================
+Logs
+==========================================
+logs/
+.log
+npm-debug.log
+yarn-debug.log*
+pnpm-debug.log*
+lerna-debug.log*
+
+==========================================
+Runtime & Process Files
+==========================================
+pids/
+*.pid
+*.seed
+*.pid.lock
+
+==========================================
+Cache
+==========================================
+.cache/
+.parcel-cache/
+.vite/
+.eslintcache
+.stylelintcache
+*.tsbuildinfo
+
+==========================================
+OS Generated Files
+==========================================
+.DS_Store
+Thumbs.db
+desktop.ini
+
+==========================================
+IDE & Editors
+==========================================
+.vscode/
+.idea/
+*.sublime-workspace
+*.sublime-project
+*.swp
+*.swo
+
+==========================================
+Temporary Files
+==========================================
+tmp/
+temp/
+*.tmp
+*.temp
+*.bak
+*.backup
+
+==========================================
+Testing
+==========================================
+.nyc_output/
+playwright-report/
+test-results/
+
+==========================================
+Firebase & Cloud Credentials
+==========================================
+serviceAccountKey.json
+firebase-adminsdk*.json
+-service-account.json
+credentials.json
+secrets/
+private-keys/
+*.pem
+*.key
+*.p12
+*.pfx
+
+==========================================
+Generated Resume Files
+==========================================
+generated-resumes/
+uploads/
+*.pdf
+*.docx
